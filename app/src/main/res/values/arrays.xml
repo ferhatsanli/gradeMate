@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="credits">
+        <item>1 credit</item>
+        <item>2 credit</item>
+        <item>3 credit</item>
+        <item>4 credit</item>
+        <item>5 credit</item>
+        <item>6 credit</item>
+        <item>7 credit</item>
+    </string-array>
+    <string-array name="grades">
+        <item>AA</item>
+        <item>BA</item>
+        <item>BB</item>
+        <item>CB</item>
+        <item>CC</item>
+        <item>DC</item>
+        <item>FF</item>
+
+    </string-array>
+</resources>

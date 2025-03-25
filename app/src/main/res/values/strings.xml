@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GradeMate</string>
+    <string name="class_name">Class Name</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="calculate">Calculate</string>
+</resources>
