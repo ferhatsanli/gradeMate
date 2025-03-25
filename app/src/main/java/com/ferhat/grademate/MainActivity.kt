@@ -48,6 +48,10 @@ class MainActivity : AppCompatActivity() {
             newCourseB.spnNewCourseGrade.setSelection(score)
             newCourseB.spnNewCourseCredit.setSelection(credit)
             Log.i(TAG, "onCreate: values uploaded")
+            // delete button
+            newCourseB.btnDeleteCourse.setOnClickListener {
+                mainB.gradesList.removeView(newCourseB.root)
+            }
 
             // it's ready, add it
             layoutInflater.inflate(R.layout.new_course, null)
@@ -57,12 +61,5 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-//        btnAdd.setOnClickListener {
-//
-//            newAddedCourse.findViewById<EditText>(R.id.etNewCourseName).setText(courseName)
-//            newAddedCourse.findViewById<Spinner>(R.id.spnNewCourseGrade)
-//                .setSelection(spnScore.id)
-//
-//        }
     }
 }
