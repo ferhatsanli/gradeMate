@@ -2,6 +2,7 @@ package com.ferhat.grademate
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Calculate button not necessary in the beginning
+        // When the app resumes onCreate triggers as well
+        if (mainB.gradesList.childCount == 0)
+            mainB.btnCalculate.visibility = View.INVISIBLE
 
         mainB.btnAddCourse.setOnClickListener {
 
@@ -51,13 +57,16 @@ class MainActivity : AppCompatActivity() {
             // delete button
             newCourseB.btnDeleteCourse.setOnClickListener {
                 mainB.gradesList.removeView(newCourseB.root)
+                // check list is empty, btnCalculate needed?
+                if (mainB.gradesList.childCount == 0)
+                    mainB.btnCalculate.visibility = View.INVISIBLE
             }
 
             // it's ready, add it
             layoutInflater.inflate(R.layout.new_course, null)
-            Log.i(TAG, "onCreate: inflated")
             mainB.gradesList.addView(newCourseB.root)
-            Log.i(TAG, "onCreate: added")
+            // at least one item added... it can be visible now
+            mainB.btnCalculate.visibility = View.VISIBLE
         }
 
 
