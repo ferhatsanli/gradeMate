@@ -3,6 +3,8 @@ package com.ferhat.grademate
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +16,8 @@ import com.ferhat.grademate.databinding.NewCourseBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var mainB : ActivityMainBinding
     private val TAG = "FERHAT"
+    private val courses = "Math,GYM,Science,Computer,Art".split(',')
+    private var scoresData: MutableList<CourseData> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,6 +32,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // autocomplete for et
+        val courseAdapter = ArrayAdapter<String>(this,
+            android.R.layout.simple_spinner_dropdown_item,
+            courses)
+
+        mainB.etCourseName.setAdapter(courseAdapter)
         // Calculate button not necessary in the beginning
         // When the app resumes onCreate triggers as well
         if (mainB.gradesList.childCount == 0)
@@ -38,6 +48,9 @@ class MainActivity : AppCompatActivity() {
                 // init the new layout object
                 val newCourseB = NewCourseBinding.inflate(layoutInflater)
                 Log.i(TAG, "onCreate: new course init")
+
+                // autocomplete for et
+                newCourseB.etNewCourseName.setAdapter(courseAdapter)
 
                 // get selected values
                 val courseName = mainB.etCourseName.text.toString()
@@ -76,4 +89,35 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    fun calculateAverage(v: View) {
+        var totalScore = 0.0
+        var totalCredit = 0.0
+        for (i in 0..mainB.gradesList.childCount){
+            val tempCourseDatas = mainB.gradesList.getChildAt(i)
+            val tempCourseBinding = NewCourseBinding.bind(tempCourseDatas)
+            scoresData.add(CourseData(tempCourseBinding.etNewCourseName.text.toString(),
+                tempCourseBinding.spnNewCourseGrade.selectedItemPosition + 1,
+                tempCourseBinding.spnNewCourseCredit.selectedItem.toString()))
+            totalCredit += scoresData.last().credit + 1
+            totalScore += noteToScore(scoresData.last().scoreCode) * (scoresData.last().credit)
+        }
+        Toast.makeText(this, "Average: ${totalScore / totalCredit}", Toast.LENGTH_LONG)
+            .show()
+    }
+
+    fun noteToScore(score: String): Double {
+        return when (score) {
+            "AA" -> 4.0
+            "BA" -> 3.5
+            "BB" -> 3.0
+            "CB" -> 2.5
+            "CC" -> 2.0
+            "DC" -> 1.5
+            "DD" -> 1.0
+            "FF" -> 0.5
+            else -> 0.0
+        }
+    }
+
 }

@@ -80,6 +80,7 @@
         android:id="@+id/btnCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="calculateAverage"
         android:text="@string/calculate"
         android:layout_marginBottom="60dp"
         app:layout_constraintEnd_toEndOf="parent"
