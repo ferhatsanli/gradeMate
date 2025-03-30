@@ -95,12 +95,17 @@ class MainActivity : AppCompatActivity() {
         var totalCredit = 0.0
         for (i in 0..mainB.gradesList.childCount){
             val tempCourseDatas = mainB.gradesList.getChildAt(i)
+            Log.i(TAG, "calculateAverage: $tempCourseDatas")
             val tempCourseBinding = NewCourseBinding.bind(tempCourseDatas)
+            Log.i(TAG, "calculateAverage: ${tempCourseBinding.etNewCourseName.text}")
             scoresData.add(CourseData(tempCourseBinding.etNewCourseName.text.toString(),
                 tempCourseBinding.spnNewCourseGrade.selectedItemPosition + 1,
                 tempCourseBinding.spnNewCourseCredit.selectedItem.toString()))
+            Log.i(TAG, "calculateAverage: ${tempCourseBinding.spnNewCourseGrade.selectedItemPosition + 1}")
             totalCredit += scoresData.last().credit + 1
+            Log.i(TAG, "calculateAverage: ${scoresData.last().credit}")
             totalScore += noteToScore(scoresData.last().scoreCode) * (scoresData.last().credit)
+            Log.i(TAG, "calculateAverage: $totalScore")
         }
         Toast.makeText(this, "Average: ${totalScore / totalCredit}", Toast.LENGTH_LONG)
             .show()
