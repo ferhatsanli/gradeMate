@@ -21,13 +21,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnDeleteCourse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:background="@android:drawable/ic_menu_delete"
+        android:elevation="8dp"
+        android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/delete_course"
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +42,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:entries="@array/credits"
+        android:popupBackground="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewCourseName" />
 
@@ -49,6 +53,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:entries="@array/grades"
+        android:popupBackground="@color/white"
         app:layout_constraintStart_toEndOf="@+id/spnNewCourseCredit"
         app:layout_constraintTop_toBottomOf="@id/etNewCourseName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

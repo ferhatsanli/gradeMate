@@ -4,4 +4,6 @@
     <string name="add">Add</string>
     <string name="delete">Delete</string>
     <string name="calculate">Calculate</string>
+    <string name="add_course">Add Course</string>
+    <string name="delete_course">Delete</string>
 </resources>
