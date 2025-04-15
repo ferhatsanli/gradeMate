@@ -9,25 +9,35 @@
 
     <ImageView
         android:id="@+id/ivMjolnir"
-        android:layout_width="265dp"
-        android:layout_height="300dp"
-        app:srcCompat="@drawable/mjolnir"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="161dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="145dp"
+        android:contentDescription="@string/mjolnir"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mjolnir" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMjolnir">
 
         <ImageButton
             android:id="@+id/imgBtnEnter"
             android:layout_width="286dp"
             android:layout_height="85dp"
             android:background="@android:color/transparent"
+            android:contentDescription="@string/enter"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/purple_button" />
 
@@ -37,9 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/Norse"
-            android:text="Enter"
+            android:text="@string/enter"
             android:textColor="@color/white"
-            android:textSize="50dp" />
+            android:textSize="50sp" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,6 @@
     <string name="calculate">Calculate</string>
     <string name="add_course">Add Course</string>
     <string name="delete_course">Delete</string>
+    <string name="enter">Enter</string>
+    <string name="mjolnir">mjolnir</string>
 </resources>
