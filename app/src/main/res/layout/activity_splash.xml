@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ActivitySplash"
     android:background="@drawable/appbg_blue">
-
 
     <ImageView
         android:id="@+id/ivMjolnir"
@@ -39,14 +40,14 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/enter"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/purple_button" />
+            app:srcCompat="@drawable/purple_button_neutral" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/Norse"
+            android:fontFamily="@font/norse"
             android:text="@string/enter"
             android:textColor="@color/white"
             android:textSize="50sp" />

@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.ferhat.grademate.databinding.ActivityMainBinding
 import com.ferhat.grademate.databinding.NewCourseBinding
+import com.shashank.sony.fancytoastlib.FancyToast
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainB : ActivityMainBinding
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                 mainB.btnCalculate.visibility = View.VISIBLE
             }
             else
-                Toast.makeText(this, "Please enter a class name!", Toast.LENGTH_LONG)
+                FancyToast.makeText(this, "Please enter a class name!", FancyToast.LENGTH_LONG, FancyToast.DEFAULT, true)
                     .show()
         }
 
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
             totalScore += noteToScore(scoresData.last().scoreCode) * (scoresData.last().credit)
             Log.i(TAG, "calculateAverage: $totalScore")
         }
-        Toast.makeText(this, "Average: ${totalScore / totalCredit}", Toast.LENGTH_LONG)
+        FancyToast.makeText(this, "Average: ${totalScore / totalCredit}", FancyToast.LENGTH_LONG, FancyToast.DEFAULT, true)
             .show()
     }
 
