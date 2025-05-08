@@ -31,7 +31,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivMjolnir">
+        app:layout_constraintTop_toBottomOf="@+id/ivMjolnir"
+        android:clickable="true">
 
         <ImageButton
             android:id="@+id/imgBtnEnter"
@@ -39,6 +40,7 @@
             android:layout_height="85dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/enter"
+            android:clickable="true"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/purple_button_neutral" />
 
@@ -50,6 +52,32 @@
             android:fontFamily="@font/norse"
             android:text="@string/enter"
             android:textColor="@color/white"
+            android:textSize="50sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/purple_button_pressed" />
+
+        <TextView
+            android:id="@+id/tvFall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/norse"
+            android:text="Fall"
+            android:textColor="#FFFFFFFF"
             android:textSize="50sp" />
     </FrameLayout>
 
