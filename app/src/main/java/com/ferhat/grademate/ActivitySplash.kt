@@ -1,7 +1,9 @@
 package com.ferhat.grademate
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.MotionEvent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,12 +17,14 @@ import com.shashank.sony.fancytoastlib.FancyToast
 class ActivitySplash : AppCompatActivity() {
     private val TAG = "FERHAT"
     private lateinit var splashB: ActivitySplashBinding
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         // binding
         splashB = ActivitySplashBinding.inflate(layoutInflater)
         // when it loaded, i couldn't see the images
         splashB.ivMjolnir.setImageResource(R.drawable.mjolnir)
         splashB.imgBtnEnter.setImageResource(R.drawable.purple_button_pressed)
+        splashB.imgDropIt.setImageResource(R.drawable.black_button_n)
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -49,9 +53,6 @@ class ActivitySplash : AppCompatActivity() {
             this.logi("OnClick@this.logi")
             this.popmsg("onclick@this.popmsg")
             FancyToast.makeText(applicationContext, "imgBtnEnter", FancyToast.LENGTH_LONG, FancyToast.INFO, true).show()
-            // open main activity
-            val activityTransporter = Intent(this, MainActivity::class.java)
-            startActivity(activityTransporter)
         }
 
         // Enter button animation:
@@ -65,7 +66,25 @@ class ActivitySplash : AppCompatActivity() {
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     Log.i(TAG, "touchUp")
                     splashB.imgBtnEnter.setImageResource(R.drawable.purple_button_pressed)
-                    v.performClick()
+
+                    // Flying animation
+                    val flyanim = AnimationUtils.loadAnimation(applicationContext, R.anim.flying)
+                    splashB.ivMjolnir.startAnimation(flyanim)
+
+                    // Delay
+                    object : CountDownTimer(1000, 1000){
+                        override fun onTick(millisUntilFinished: Long) {
+                            this.logi("tick")
+                        }
+
+                        override fun onFinish() {
+                            this.logi("timer done")
+                            val intent = Intent(applicationContext, MainActivity::class.java)
+                            startActivity(intent)
+                        }
+
+                    }.start()
+
                 }
             }
             false
