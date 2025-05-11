@@ -17,14 +17,14 @@
         android:layout_marginEnd="73dp"
         android:layout_marginBottom="145dp"
         android:contentDescription="@string/mjolnir"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintBottom_toTopOf="@+id/frameBtnEnter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mjolnir" />
+        android:background="@drawable/mjolnir"/>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frameBtnEnter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
@@ -38,14 +38,13 @@
             android:id="@+id/imgBtnEnter"
             android:layout_width="220dp"
             android:layout_height="85dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/img_enter_selector"
             android:clickable="true"
             android:contentDescription="@string/enter"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/purple_button_neutral" />
+            android:scaleType="fitCenter" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvEnter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -56,20 +55,23 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/frameBtnDrop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/frameBtnEnter">
 
         <ImageButton
-            android:id="@+id/imgDropIt"
+            android:id="@+id/imgBtnDropIt"
+            android:contentDescription="@string/drop_it"
             android:layout_width="180dp"
             android:layout_height="80dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/black_button_n" />
+            android:background="@drawable/img_drop_it_selector"
+            android:scaleType="center"
+            android:src="@null"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/tvFall"
@@ -77,9 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/norse"
-            android:text="Drop it"
+            android:text="@string/drop_it"
             android:textColor="#FFFFFFFF"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            android:clickable="false"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

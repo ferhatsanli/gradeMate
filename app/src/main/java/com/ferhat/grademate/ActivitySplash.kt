@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -17,14 +18,14 @@ import com.shashank.sony.fancytoastlib.FancyToast
 class ActivitySplash : AppCompatActivity() {
     private val TAG = "FERHAT"
     private lateinit var splashB: ActivitySplashBinding
+    private lateinit var animBtnPressed: Animation
+    private lateinit var animBtnReleased: Animation
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         // binding
         splashB = ActivitySplashBinding.inflate(layoutInflater)
         // when it loaded, i couldn't see the images
-        splashB.ivMjolnir.setImageResource(R.drawable.mjolnir)
-        splashB.imgBtnEnter.setImageResource(R.drawable.purple_button_pressed)
-        splashB.imgDropIt.setImageResource(R.drawable.black_button_n)
+        // 12/05/2025>> ...because I was using srcCompat for defining image source at xml
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,6 +48,8 @@ class ActivitySplash : AppCompatActivity() {
         splashB.ivMjolnir.setOnClickListener { v ->
             animateMjolnir()
         }
+        animBtnPressed = AnimationUtils.loadAnimation(this, R.anim.button_pressed)
+        animBtnReleased = AnimationUtils.loadAnimation(this, R.anim.button_released)
 
         splashB.imgBtnEnter.setOnClickListener {
             Log.i("splashB", "onclick")
@@ -60,12 +63,10 @@ class ActivitySplash : AppCompatActivity() {
             when(event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     this.logi("touchDown")
-                    splashB.imgBtnEnter.setImageResource(R.drawable.purple_button_neutral)
 
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     Log.i(TAG, "touchUp")
-                    splashB.imgBtnEnter.setImageResource(R.drawable.purple_button_pressed)
 
                     // Flying animation
                     val flyanim = AnimationUtils.loadAnimation(applicationContext, R.anim.flying)
@@ -90,7 +91,18 @@ class ActivitySplash : AppCompatActivity() {
             false
         }
 
-//        splashB.frameLayout.setOnClickListener { this.logi("framelayout") }
+        // Drop It button:
+        splashB.imgBtnDropIt.setOnTouchListener { v, event ->
+            when (event.action){
+                MotionEvent.ACTION_DOWN -> {
+                    v.startAnimation(animBtnPressed)
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    v.startAnimation(animBtnReleased)
+                }
+            }
+            true
+        }
 
     }
 
